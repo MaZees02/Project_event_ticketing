@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+sqlmodel
+passlib[bcrypt]
+python-jose[cryptography]
+python-dotenv
+email-validator
+httpx
+sqlalchemy
+pydantic
+gunicorn==21.2.0
+
+
+
