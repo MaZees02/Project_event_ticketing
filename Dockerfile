@@ -16,4 +16,5 @@ COPY ./event_ticketing_system ./event_ticketing_system
 
 EXPOSE 8000
 
-CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "event_ticketing_system.main:app", "--bind", "0.0.0.0:8000", "--workers", "2"]
+# Command to run FastAPI with Gunicorn+Uvicorn
+CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000", "event_ticketing_system.main:app"]
