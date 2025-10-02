@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y gcc build-essential --no-install-recomm
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ./app ./app
+COPY ./event_ticketing/app ./app
 
 # To expose the port the app will run on
 EXPOSE 8000
