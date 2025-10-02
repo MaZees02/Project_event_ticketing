@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y gcc build-essential --no-install-recomm
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ./event_ticketing_system ./ 
+COPY ./Project_event_ticketing ./ 
 
 EXPOSE 8000
 
