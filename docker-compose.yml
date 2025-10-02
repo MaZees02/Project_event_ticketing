@@ -1,40 +1,29 @@
-# version: "3.8"
-# services:
-#   db:
-#     image: postgres:15
-#     environment:
-#       POSTGRES_USER: postgres
-#       POSTGRES_PASSWORD: postgres
-#       POSTGRES_DB: ticketing
-#     volumes:
-#       - db-data:/var/lib/postgresql/data
-#     ports:
-#       - "5432:5432"
-
-#   web:
-#     build: .
-#     command: gunicorn -k uvicorn.workers.UvicornWorker app.main:app --bind 0.0.0.0:8000 --workers 2
-#     ports:
-#       - "8000:8000"
-#     environment:
-#       DATABASE_URL: postgresql+psycopg2://postgres:postgres@db:5432/ticketing
-#       SECRET_KEY: "change-me"
-#     depends_on:
-#       - db
-#     volumes:
-#       - ./app:/app
-
-# volumes:
-#   db-data:
-
-version: "3.9"
-
+version: "3.8"
 services:
-  event_ticketing:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ticketing
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  web:
     build: .
-    container_name: event_ticketing_app
+    command: ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000", "event_ticketing_system.app.main:app"]
     ports:
       - "8000:8000"
     environment:
-      - SECRET_KEY="q2mi0vD51HCjFJJ0lKVGVnz9tUD3oEmdLY0b7WsBqTA"
-      - DATABASE_URL=sqlite:///./event_ticketing.db
+      DATABASE_URL: postgresql+psycopg2://postgres:postgres@db:5432/ticketing
+      SECRET_KEY: "q2mi0vD51HCjFJJ0lKVGVnz9tUD3oEmdLY0b7WsBqTA"
+    depends_on:
+      - db
+    volumes:
+      - ./app:/app
+
+volumes:
+  db-data:
+
