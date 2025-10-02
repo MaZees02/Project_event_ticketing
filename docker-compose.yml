@@ -36,5 +36,5 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - SECRET_KEY=your-secret-key
+      - SECRET_KEY="q2mi0vD51HCjFJJ0lKVGVnz9tUD3oEmdLY0b7WsBqTA"
       - DATABASE_URL=sqlite:///./event_ticketing.db
