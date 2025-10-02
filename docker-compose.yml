@@ -1,28 +1,40 @@
-version: "3.8"
-services:
-  db:
-    image: postgres:15
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: ticketing
-    volumes:
-      - db-data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+# version: "3.8"
+# services:
+#   db:
+#     image: postgres:15
+#     environment:
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: postgres
+#       POSTGRES_DB: ticketing
+#     volumes:
+#       - db-data:/var/lib/postgresql/data
+#     ports:
+#       - "5432:5432"
 
-  web:
+#   web:
+#     build: .
+#     command: gunicorn -k uvicorn.workers.UvicornWorker app.main:app --bind 0.0.0.0:8000 --workers 2
+#     ports:
+#       - "8000:8000"
+#     environment:
+#       DATABASE_URL: postgresql+psycopg2://postgres:postgres@db:5432/ticketing
+#       SECRET_KEY: "change-me"
+#     depends_on:
+#       - db
+#     volumes:
+#       - ./app:/app
+
+# volumes:
+#   db-data:
+
+version: "3.9"
+
+services:
+  event_ticketing:
     build: .
-    command: gunicorn -k uvicorn.workers.UvicornWorker app.main:app --bind 0.0.0.0:8000 --workers 2
+    container_name: event_ticketing_app
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: postgresql+psycopg2://postgres:postgres@db:5432/ticketing
-      SECRET_KEY: "change-me"
-    depends_on:
-      - db
-    volumes:
-      - ./app:/app
-
-volumes:
-  db-data:
+      - SECRET_KEY=your-secret-key
+      - DATABASE_URL=sqlite:///./event_ticketing.db
