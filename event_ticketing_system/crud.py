@@ -3,8 +3,8 @@ from sqlalchemy import select
 from typing import List, Optional
 import uuid
 
-import app.models as models
-import app.schemas as schemas
+import event_ticketing_system.models as models
+import event_ticketing_system.schemas as schemas
 
 # Users
 def create_user(db: Session, user_in: schemas.UserCreate) -> models.User:

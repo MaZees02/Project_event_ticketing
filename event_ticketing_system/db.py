@@ -14,7 +14,7 @@ Base = declarative_base()
 
 def init_db():
     # This import models so they are registered with Base metadata
-    import app.models  
+    import event_ticketing_system.models  
     Base.metadata.create_all(bind=engine)
 
 

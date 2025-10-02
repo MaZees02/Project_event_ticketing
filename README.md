@@ -20,25 +20,21 @@ Dockerized for easy deployment.
 
 🏗️ Architecture
 
-Project---Event-ticketing-system/
-├─ app/
-│  ├─ __init__.py
+Project_event_ticketing/
+├─ event_ticketing_system/
 │  ├─ main.py
 │  ├─ db.py
+│  ├─ crud.py
 │  ├─ models.py
 │  ├─ schemas.py
-│  ├─ crud.py
-│  └─ routers/
-│     ├─ __init__.py
-│     ├─ user.py
-│     ├─ event.py
-│     ├─ ticket.py
-│     └─ payment.py
-├─ requirements.txt
+│  ├─ routers/
+│  └─ .env
 ├─ Dockerfile
 ├─ docker-compose.yml
+├─ requirements.txt
 ├─ README.md
 └─ .gitignore
+
 
 
 Services will be available at:

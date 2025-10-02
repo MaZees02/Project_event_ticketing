@@ -1,9 +1,8 @@
-# app/main.py
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.db import init_db, engine
-from app.routers import user, event, ticket, payment
+from event_ticketing_system.db import init_db, engine
+from .routers import user, event, ticket, payment
 
 app = FastAPI(title="Merged Event Ticketing API")
 
