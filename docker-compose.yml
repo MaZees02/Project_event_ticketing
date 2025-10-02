@@ -13,7 +13,7 @@ services:
 
   web:
     build: .
-    command: ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000", "event_ticketing_system.app.main:app"]
+    command: ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000", "event_ticketing_system.main:app"]
     ports:
       - "8000:8000"
     environment:
